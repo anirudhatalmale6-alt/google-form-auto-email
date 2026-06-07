@@ -1,0 +1,91 @@
+SETUP GUIDE - Google Form Auto-Email Script
+============================================
+
+This guide walks you through setting up the script.
+Total time: about 5 minutes.
+
+
+STEP 1: OPEN YOUR GOOGLE SHEET
+-------------------------------
+- Open the Google Sheet that is linked to your Form.
+- Look at Row 1 (the header row). Note the exact column name
+  that contains the user's answer (e.g., "Answer" or
+  "Which do you choose?" etc.)
+
+
+STEP 2: OPEN THE SCRIPT EDITOR
+-------------------------------
+- In your Google Sheet, click: Extensions > Apps Script
+- This opens the script editor in a new tab.
+- You will see a file called "Code.gs" on the left side.
+- Select ALL the text in that file (Ctrl+A) and DELETE it.
+
+
+STEP 3: PASTE THE SCRIPT
+--------------------------
+- Open the file "FormAutoEmail.gs" that I provided.
+- Copy ALL of its contents (Ctrl+A, then Ctrl+C).
+- Paste it into the script editor (Ctrl+V).
+
+
+STEP 4: CHECK THE SETTINGS
+----------------------------
+Look at the top of the script. You may need to change:
+
+  ADMIN_EMAIL    - Your email. Currently set to "xpertusva@gmail.com"
+  ANSWER_COLUMN  - Must match the EXACT column header in your Sheet.
+                   Currently set to "Answer". Change this if your
+                   column is named something different.
+  CORRECT_ANSWER - Currently set to "B"
+
+
+STEP 5: RUN THE SETUP (one time only)
+---------------------------------------
+- In the script editor, look at the dropdown menu near the top
+  that says "onFormSubmit". Click it and change it to "createTrigger".
+- Click the Run button (the play/triangle icon).
+- Google will ask you to authorize the script. Click:
+    1. "Review permissions"
+    2. Choose your Google account
+    3. Click "Advanced" (bottom left)
+    4. Click "Go to Untitled project (unsafe)"
+    5. Click "Allow"
+- You should see "Trigger created successfully!" in the log at the bottom.
+
+
+STEP 6: TEST IT
+----------------
+- Open your Google Form and submit a test response.
+- Check your email (xpertusva@gmail.com) - you should receive the
+  submission summary.
+- Check the test email address you used - it should receive the
+  correct or wrong reply.
+
+
+DONE! The script is now running automatically.
+
+
+=============================================
+HOW TO CHANGE THINGS LATER
+=============================================
+
+TO CHANGE YOUR EMAIL ADDRESS:
+  - Open the Sheet > Extensions > Apps Script
+  - Find the line: var ADMIN_EMAIL = "xpertusva@gmail.com";
+  - Change the email between the quotes
+  - Click the Save button (disk icon) or Ctrl+S
+
+TO CHANGE THE EMAIL TEMPLATES:
+  - Open the Sheet > Extensions > Apps Script
+  - Find TEMPLATE_CORRECT or TEMPLATE_WRONG
+  - Edit the text between the backtick characters (`)
+  - Click Save
+
+TO CHANGE WHAT COUNTS AS "CORRECT":
+  - Open the Sheet > Extensions > Apps Script
+  - Find: var CORRECT_ANSWER = "B";
+  - Change "B" to whatever the correct answer should be
+  - Click Save
+
+IMPORTANT: After any change, just click Save. You do NOT need
+to run createTrigger again. The trigger stays active.
